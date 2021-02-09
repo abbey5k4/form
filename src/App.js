@@ -8,6 +8,7 @@ const App = () => {
     choice3: "",
   });
   const [ errorMessage, setErrorMessage ] = React.useState("");
+  const [ successMessage, setSuccessMessage ] = React.useState("");
 
   const handleChoiceInput = (input) => (e) => {
     setChoices({
@@ -16,24 +17,19 @@ const App = () => {
   }  
 
   const validateForm = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     // e.stopPropagation();
-    try{
       if ( choices.choice1 == "calculus" || choices.choice2 == "calculus" || choices.choice3 == "calculus" ) {
-        console.log("calculus found");
-        // console.log("cannot proceed");
-      } else {
-        setErrorMessage("Calculus must be part of the choices")
-      }
-    } catch(err) {
-      
+        setSuccessMessage("Calculus was selected")
+    } else {
+      setErrorMessage("Calculus must be selected")
     }
-    
   }   
   return (
     <div className="App">
       <form>
         <p>{errorMessage}</p>
+        <p>{successMessage}</p>
         <div className="form-1">
           <label>Choice 1</label> &nbsp;&nbsp;
           <input 
@@ -62,7 +58,7 @@ const App = () => {
           />
         </div>
         <button 
-          onClick={() => validateForm()}
+          onClick={(e) => validateForm(e)}
           className="btn-submit"
         >
           Submit
