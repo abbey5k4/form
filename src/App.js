@@ -1,23 +1,64 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
 import './App.css';
 
-function App() {
+const App = () => {
+  const [ choices, setChoices ] = React.useState({
+    choice1: "",
+    choice2: "",
+    choice3: "",
+  });
+
+  const handleChoiceInput = (input) => (e) => {
+    setChoices({
+      ...choices, [input]: e.target.value
+    });
+  }  
+
+  const validateForm = (e) => {
+    // e.preventDefault();
+    // e.stopPropagation();
+    if ( choices.choice1 == "calculus" || choices.choice2 == "calculus" || choices.choice3 == "calculus" ) {
+      console.log("calculus found");
+    } else {
+      console.log("cannot proceed");
+    }
+  }   
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <form>
+        <div>
+          <label>Choice 1</label><br />
+          <input 
+            type="text" 
+            placeholder="Enter choice" 
+            value={choices.choice1}
+            onChange={handleChoiceInput("choice1")}
+          />
+        </div>
+        <div>
+          <label>Choice 2</label><br />
+          <input 
+            type="text" 
+            placeholder="Enter choice" 
+            value={choices.choice2}
+            onChange={handleChoiceInput("choice2")}
+          />
+        </div>
+        <div>
+          <label>Choice 3</label><br />
+          <input 
+            type="text" 
+            placeholder="Enter choice" 
+            value={choices.choice3}
+            onChange={handleChoiceInput("choice3")}
+          />
+        </div>
+        <button 
+          onClick={() => validateForm()}
         >
-          Learn React
-        </a>
-      </header>
+          Submit
+        </button>
+      </form>
     </div>
   );
 }
