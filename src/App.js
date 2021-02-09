@@ -26,8 +26,8 @@ const App = () => {
   return (
     <div className="App">
       <form>
-        <div>
-          <label>Choice 1</label><br />
+        <div className="form-1">
+          <label>Choice 1</label> &nbsp;&nbsp;
           <input 
             type="text" 
             placeholder="Enter choice" 
@@ -35,8 +35,8 @@ const App = () => {
             onChange={handleChoiceInput("choice1")}
           />
         </div>
-        <div>
-          <label>Choice 2</label><br />
+        <div className="form-2">
+          <label>Choice 2</label> &nbsp;&nbsp;
           <input 
             type="text" 
             placeholder="Enter choice" 
@@ -44,8 +44,8 @@ const App = () => {
             onChange={handleChoiceInput("choice2")}
           />
         </div>
-        <div>
-          <label>Choice 3</label><br />
+        <div className="form-3">
+          <label>Choice 3</label> &nbsp;&nbsp;
           <input 
             type="text" 
             placeholder="Enter choice" 
@@ -55,6 +55,7 @@ const App = () => {
         </div>
         <button 
           onClick={() => validateForm()}
+          className="btn-submit"
         >
           Submit
         </button>
